@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  overscroll-behavior: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* カメラ映像はcanvasへ描画 */
+#camera {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#view {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-button {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 45%);
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.icon-button svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.start-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+}
+
+#shootButton {
+  position: fixed;
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 3;
+  width: 76px;
+  height: 76px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  transform: translateX(-50%);
+}
+
+#shootButton::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+#shootButton:active::after {
+  transform: scale(0.9);
+}
+
+#shootButton:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+#flash {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#preview {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #000;
+}
+
+#resultImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  -webkit-touch-callout: default;
+}
+
+.close-button {
+  position: absolute;
+  top: calc(18px + env(safe-area-inset-top));
+  right: 18px;
+}
+
+.save-button {
+  position: absolute;
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+}
